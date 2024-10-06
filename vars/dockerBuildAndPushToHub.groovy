@@ -1,20 +1,27 @@
-// def call(String project, String ImageTag, String hubUser){
-//     withCredentials([usernamePassword(
-//             credentialsId: "docker-credentials",
-//             usernameVariable: "dnsrinu143@gmail.com",
-//             passwordVariable: "srinu1234"
-//     )]) {
-//         sh "docker login -u '$USER' -p '$PASS'"
-//     }
-//     sh "docker image push ${hubUser}/${project}:${ImageTag}"
-//     sh "docker image push ${hubUser}/${project}:latest"   
-// }
-def call(){
- withDockerRegistry(credentialsId: 'docker-credentials', toolName: 'docker') {
-                      sh "docker tag spring-image srinu641/spring-image:latest"
-                      sh "docker push srinu641/spring-image:latest" 
-                    }
+def call(String project, String ImageTag, String hubUser){
+withCredentials([usernamePassword(
+ credentialsId: 'docker-credentials',
+ passwordVariable: 'srinu1234',
+ usernameVariable: 'dnsrinu143@gmail.com'
+)]) {
+        sh "docker login -u '$USER' -p '$PASS'"
+    }
+    sh "docker image push ${hubUser}/${project}:${ImageTag}"
+    sh "docker image push ${hubUser}/${project}:latest"   
 }
+
+
+// my docker Id ,Credentials
+// withCredentials([usernamePassword(credentialsId: 'docker-credentials', passwordVariable: 'srinu1234', usernameVariable: 'dnsrinu143@gmail.com')]) {
+//     // some block
+// }
+
+// def call(){
+//  withDockerRegistry(credentialsId: 'docker-credentials', toolName: 'docker') {
+//                       sh "docker tag spring-image srinu641/spring-image:latest"
+//                       sh "docker push srinu641/spring-image:latest" 
+//                     }
+// }
 
 // def dockerBuildAndPushToHub(String project, String imageTag, String dockerHubUser) {
 //     sh """
