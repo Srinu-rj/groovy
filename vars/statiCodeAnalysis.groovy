@@ -5,8 +5,9 @@
 //    }
 // }
 
+
 def call(){
-  withSonarQubeEnv(credentialsId: 'sonar-api', installationName: 'sonar') {
+  withSonarQubeEnv(credentialsId: 'sonar-token', installationName: 'sonar') {
        sh ''' $SCANNER_HOHE/bin/sonar-scanner -Dsonar.projectName=spring-boot-sonar  -Dsonar.projectKey=spring-boot-sonar \
          -Dsonar.java.binaries=. '''
    }
