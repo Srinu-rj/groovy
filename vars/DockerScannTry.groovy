@@ -1,9 +1,9 @@
 def call(String project, String ImageTag, String hubUser){
     
-    sh """   
-     trivy image ${hubUser}/${project}:latest > scan.txt
-     cat scan.txt
-    """
+    // sh """   
+    //  trivy image ${hubUser}/${project}:latest > scan.txt
+    //  cat scan.txt
+    // """
 
     sh '''
         # Install Trivy if not already installed
@@ -12,7 +12,7 @@ def call(String project, String ImageTag, String hubUser){
         fi
 
         # Scan the Docker image
-        trivy image --exit-code 1 --severity HIGH,CRITICAL 
+        trivy image --exit-code 1 --severity HIGH,CRITICAL spring-image:v1
                     '''
     
 }
