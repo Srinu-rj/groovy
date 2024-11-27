@@ -7,7 +7,7 @@
 
 
 def call(){
-  withSonarQubeEnv(credentialsId: 'sonar-token', installationName: 'sonar') {
+  withSonarQubeEnv(credentialsId: 'sonar-token') {
        sh ''' $SCANNER_HOHE/bin/sonar-scanner -Dsonar.projectName=spring-boot-sonar  -Dsonar.projectKey=spring-boot-sonar \
          -Dsonar.java.binaries=. '''
    }
