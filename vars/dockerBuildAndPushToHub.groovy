@@ -56,4 +56,3 @@ def call(){
 //     docker push ${dockerHubUser}/${project}:latest
 //     """
 // }
-
