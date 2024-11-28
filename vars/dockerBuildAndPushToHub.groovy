@@ -16,7 +16,7 @@ def call(){
        sh "docker tag spring-image srinu641/spring-image:latest"
        sh "docker push srinu641/spring-image:latest" 
 }
-
+}
 // withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker', url: 'https://hub.docker.com/') {
 //     // some block
 // }
